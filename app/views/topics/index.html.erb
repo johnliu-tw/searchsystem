@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Course search system</h1>
+
+<table>
+  <%= form_tag index_topics_path, method: :get do %>
+<%= text_field_tag :search, params[:search], placeholder: "Enter Text..." %>
+<%= submit_tag "Search", name: nil %>
+<% end %>
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Teacher</th>
+      <th>Site</th>
+      <th>Time</th>
+      <th>Credit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= topic.course %></td>
+        <td><%= topic.teacher %></td>
+        <td><%= topic.site %></td>
+        <td><%= topic.time %></td>
+        <td><%= topic.credit %></td>
+        <td><%= link_to 'Show', topic %></td>
+        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course', new_topic_path %>

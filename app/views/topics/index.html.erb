@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Course search system</h1>
+<%= form_tag topics_path, method:"get" do %>
+course<%=text_field_tag :course%>
+teacher<%=text_field_tag :teacher%>
+time<%=text_field_tag :time%>
+<%=submit_tag "search"%>
+<%end%>
+
 
 <table>
-  <%= form_tag index_topics_path, method: :get do %>
-<%= text_field_tag :search, params[:search], placeholder: "Enter Text..." %>
-<%= submit_tag "Search", name: nil %>
-<% end %>
   <thead>
     <tr>
       <th>Course</th>
